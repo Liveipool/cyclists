@@ -1,3 +1,13 @@
+.register-page {
+    margin: 50px;
+}
+
+.title {
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #register {
     margin-right: 15px;
 }

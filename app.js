@@ -16,15 +16,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 路由跳转，app.js每次修改后要重启应用才能生效
+// 路由跳转都在这里写，app.js每次修改后要重启应用才能生效
 app.get('/', function (req, res) {
   res.render('login');
 });
 app.get('/register', function (req, res) {
   res.render('register');
 });
-app.get('/index', function (req, res) {
-  res.render('index');
+app.get('/record', function (req, res) {
+  res.render('record');
+});
+app.get('/event', function (req, res) {
+  res.render('event');
+});
+app.get('/myEvent', function (req, res) {
+  res.render('myEvent');
+});
+app.get('/friend', function (req, res) {
+  res.render('friend');
 });
 
 // catch 404 and forward to error handler

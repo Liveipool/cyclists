@@ -1,3 +1,13 @@
+.login-page {
+    margin: 50px;
+}
+
+.title {
+    height: 60px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #login {
     margin-right: 15px;
 }

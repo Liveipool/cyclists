@@ -3,18 +3,19 @@ block links
     link(rel='stylesheet', href='/stylesheets/register.css')
 
 block content
-    h1 Register
-    form
-        div.form-group
-            label(for="username") Username
-            input#username.form-control(type="text" placeholder="Please enter your username")
-        div.form-group
-            label(for="password") Password
-            input#password.form-control(type="text" placeholder="Please enter your password")
-        div.form-group
-            label(for="phone") Phone Number
-            input#phone.form-control(type="text" placeholder="Please enter your phone number")
-    button#register.btn.btn-default Register
-    button#back.btn.btn-default Back To Login
+    div.register-page
+        div.title Register
+        form
+            div.form-group
+                label(for="username") Username
+                input#username.form-control(type="text" placeholder="Please enter your username")
+            div.form-group
+                label(for="password") Password
+                input#password.form-control(type="text" placeholder="Please enter your password")
+            div.form-group
+                label(for="phone") Phone Number
+                input#phone.form-control(type="text" placeholder="Please enter your phone number")
+        button#register.btn.btn-default Register
+        button#back.btn.btn-default Back To Login
 
     script(src="/javascripts/register.js")

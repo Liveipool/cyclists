@@ -5,16 +5,18 @@ block links
 
 //- 下面是写该页面的内容
 block content
-    h1 Login
-    form
-        div.form-group
-            label(for="username") Username
-            input#username.form-control(type="text" placeholder="Please enter your username")
-        div.form-group
-            label(for="password") Password
-            input#password.form-control(type="text" placeholder="Please enter your password")
-    button#login.btn.btn-default Login
-    button#register.btn.btn-default Register
+    div.login-page
+        div.title Login
+        //- bootstrap的表单组件：https://v3.bootcss.com/css/#forms
+        form
+            div.form-group
+                label(for="username") Username
+                input#username.form-control(type="text" placeholder="Please enter your username")
+            div.form-group
+                label(for="password") Password
+                input#password.form-control(type="text" placeholder="Please enter your password")
+        button#login.btn.btn-default Login
+        button#register.btn.btn-default Register
 
-    //- 各个页面需要引入的js文件一般是单独写
-    script(src="/javascripts/login.js")
+        //- 各个页面需要引入的js文件一般是单独写
+        script(src="/javascripts/login.js")

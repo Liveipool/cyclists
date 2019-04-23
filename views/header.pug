@@ -1,0 +1,25 @@
+extends layout
+block links
+    link(rel='stylesheet', href='/stylesheets/header.css')
+    link(rel='stylesheet', href='/stylesheets/record.css')
+    link(rel='stylesheet', href='/stylesheets/event.css')
+    link(rel='stylesheet', href='/stylesheets/myEvent.css')
+    link(rel='stylesheet', href='/stylesheets/friend.css')
+
+block content
+  //- bootstrap的nav组件：https://v3.bootcss.com/components/#nav
+  div.header-page
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand(href='/record') Cycling
+        div#bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/record') Record
+            li
+              a(href='/event') Event
+            li
+              a(href='/myEvent') MyEvent
+            li
+              a(href='/friend') Friend

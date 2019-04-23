@@ -1,5 +1,5 @@
 ### start
-npm install
-DEBUG=myapp:* npm start
+npm install   
+DEBUG=myapp:* npm start   
 
-http://localhost:3000/
+http://localhost:3000/   

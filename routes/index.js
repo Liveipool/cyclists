@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-// 这个文件是初始路由文件，访问http://localhost:3000先进入的就是这个页面
+// 这个文件是初始路由文件，访问 http://localhost:3000 先进入的就是下面这个函数
 router.get('/', ensureAuthenticated, function(req,res) {
-	// 如果走到这里，说明是已经通过了ensureAuthenticated验证了，即已登录了，所以跳到http://localhost:3000/record去
+	// 如果走到这里，说明是已经通过了ensureAuthenticated验证了，即已登录了，所以跳到 http://localhost:3000/record 去
 	res.redirect('record');
 });
 

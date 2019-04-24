@@ -24,14 +24,18 @@ div.record-page
                         label(for="end-time") Your end time
                         input#end-time.form-control(type="time")
             div#map
-            P Distance(/km): 
-            span#distance
-            P Time(/h): 
-            span#time
-            P Speed(km/h): 
-            span#speed
-            P Calories(/kcal): 
-            span#calories
+            div.info
+                span Distance(/km): 
+                span#distance
+            div.info
+                span Time(/h): 
+                span#time
+            div.info
+                span Speed(km/h): 
+                span#speed
+            div.info
+                span Calories(/kcal): 
+                span#calories
             //- div#place
             //-     input#origin-input.controls(type="text", placehorlder="Enter an origin location")
             //-     input#destination-input.controls(type="text", placehorlder="Enter an destination location")

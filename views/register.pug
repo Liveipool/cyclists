@@ -6,9 +6,9 @@ block content
     div.register-page
         div.title Register
         div
-            // 判断句 errors是变量
+            //- 判断句 errors是变量
             if errors
-                // 循环句 errors和error都是变量
+                //- 循环句 errors和error都是变量
                 each error in errors
                     div.alert.alert-danger #{error.msg}
         form(action="/users/register" method="POST")

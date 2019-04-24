@@ -8,9 +8,7 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cyclists');
 // mongoose.connect('mongodb+srv://cs5003public:javascript@p3-kz4ij.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
@@ -59,7 +57,6 @@ app.use(expressValidator({
 // 这个falsh是用来给全局变量里面添加值的，比如登录注册有问题时就在全局变量里面增加值，然后就可以对应显示在页面上
 //connect-falsh
 app.use(flash());
-
 //Global Variables
 app.use(function (req,res,next) {
 	res.locals.success_msg = req.flash('success_msg');
@@ -76,7 +73,6 @@ var record = require('./routes/record');
 var event = require('./routes/event');
 var myEvent = require('./routes/myEvent');
 var friend = require('./routes/friend');
-
 app.use('/', index);
 app.use('/users', users);
 app.use('/record', record);
@@ -84,31 +80,10 @@ app.use('/event', event);
 app.use('/myEvent', myEvent);
 app.use('/friend', friend);
 
-// 之前的写法
-// app.get('/', function (req, res) {
-//   res.render('login');
-// });
-// app.get('/register', function (req, res) {
-//   res.render('register');
-// });
-// app.get('/record', function (req, res) {
-//   res.render('record');
-// });
-// app.get('/event', function (req, res) {
-//   res.render('event');
-// });
-// app.get('/myEvent', function (req, res) {
-//   res.render('myEvent');
-// });
-// app.get('/friend', function (req, res) {
-//   res.render('friend');
-// });
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

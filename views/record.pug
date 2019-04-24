@@ -3,40 +3,43 @@ block links
     link(rel='stylesheet', href='/stylesheets/record.css')
 
 div.record-page
-    h1 Record Page
-    div.row
+    //- h2 Record Page
+    div#row.row
         div.col-md-6
             div#create-record
-                h2 Create record
-                div.form-group
-                    label(for="weight") Please input your weight
-                    input#weight.form-control(type="number" placeholder="Enter an number")
-                div.form-group
-                label(for="date") Please choose your running date
-                input#date.form-control(type="date")
-                div.form-group
-                label(for="start-time-input") Please choose your start time
-                input#start-time-input.form-control(type="time")
-                div.form-group
-                label(for="end-time-input") Please choose your end time
-                input#end-time-input.form-control(type="time")
+                h3 Create record
+                form
+                    div.form-group
+                        label(for="weight") Your weight
+                        div.input-group
+                            input#weight.form-control(type="number" placeholder="Please enter an number")
+                            div.input-group-addon KG
+                    div.form-group
+                        label(for="date") Your running date
+                        input#date.form-control(type="date")
+                    div.form-group
+                        label(for="start-time") Your start time
+                        input#start-time.form-control(type="time")
+                    div.form-group
+                        label(for="end-time") Your end time
+                        input#end-time.form-control(type="time")
             div#map
-            p Distance(/km): 
-            span#total
-            p Time(/h): 
+            P Distance(/km): 
+            span#distance
+            P Time(/h): 
             span#time
-            p Speed(km/h): 
+            P Speed(km/h): 
             span#speed
-            p Calories(/kcal): 
-            span#kcal
-            div#place
-                input#origin-input.controls(type="text", placehorlder="Enter an origin location")
-                input#destination-input.controls(type="text", placehorlder="Enter an destination location")
+            P Calories(/kcal): 
+            span#calories
+            //- div#place
+            //-     input#origin-input.controls(type="text", placehorlder="Enter an origin location")
+            //-     input#destination-input.controls(type="text", placehorlder="Enter an destination location")
             button#add_record(type="submit") ADD
 
-        div.col-md-6        
+        div.col-md-6
             div#show-record
-                h2 Records
+                h3 Records
                 table.table.table-striped
                     tr
                         th.table-head date
@@ -44,13 +47,6 @@ div.record-page
                         th.table-head time(/h)
                         th.table-head speed(km/h)
                         th.table-head calories(/kcal)
-                    //- - for (var i in records)
-                    //-     tr.record_line
-                    //-         td= records[i].date
-                    //-         td= records[i].distance
-                    //-         td= records[i].time
-                    //-         td= records[i].speed
-                    //-         td= records[i].calories   
                     //- 循环的写法
                     each i in records
                         tr.record_line
@@ -59,7 +55,6 @@ div.record-page
                             td #{i.time}
                             td #{i.speed}
                             td #{i.calories}
-                br
                 p Total Distance: 3 km
                 span#total_distance
                 p Average Speed: 0.5 km/h
@@ -67,6 +62,6 @@ div.record-page
                 p Total Cycling Time: 3 hours
                 span#total_cycling_time
 
-
     script(src="/javascripts/record.js")
     script(src="/javascripts/route.js")
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAeWXKaDnm2N6UX-qnR8BVFqzPWC49OWE&libraries=places&callback=initMap" async defer)

@@ -56,8 +56,8 @@ function AutocompleteDirectionsHandler(map) {
           total += myroute.legs[i].distance.value;
         }
         total = total / 1000;
-        startTimeArray=document.getElementById('start-time-input').value.split(":")
-        endTimeArray=document.getElementById('end-time-input').value.split(":")
+        startTimeArray=document.getElementById('start-time').value.split(":")
+        endTimeArray=document.getElementById('end-time').value.split(":")
         startTimeHour= parseInt(startTimeArray[0])+parseInt(startTimeArray[1])/60;
         endTimeHour= parseInt(endTimeArray[0])+parseInt(endTimeArray[1])/60;
         // calculations
@@ -66,17 +66,17 @@ function AutocompleteDirectionsHandler(map) {
         var weight=document.getElementById('weight').value;
         var k1=(total*10)/400
         var k=30/((diffTime*60)/k1)
-        var kcal=weight*diffTime*k
+        var calories=weight*diffTime*k
         var diffTimeFloat=parseFloat(diffTime).toFixed(3);
         var speedFloat=parseFloat(speed).toFixed(3);
-        var kcalFloat=parseFloat(kcal).toFixed(3);
+        var caloriesFloat=parseFloat(calories).toFixed(3);
         
         
         // var diffTime = (new Date(startTime).getTime() - new Date(endTime).getTime())/(3600*1000);
         document.getElementById('total').innerHTML = total;
         document.getElementById('time').innerHTML =  diffTimeFloat
         document.getElementById('speed').innerHTML = speedFloat;
-        document.getElementById('kcal').innerHTML = kcalFloat;
+        document.getElementById('calories').innerHTML = caloriesFloat;
     });
     
 

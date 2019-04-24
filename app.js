@@ -72,9 +72,11 @@ app.use(function (req,res,next) {
 // 路由跳转，app.js每次修改后要重启应用才能生效
 var index = require('./routes/index');
 var users = require('./routes/users');
+var record = require('./routes/record');
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/record', record);
 
 // 之前的写法
 // app.get('/', function (req, res) {

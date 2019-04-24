@@ -73,10 +73,16 @@ app.use(function (req,res,next) {
 var index = require('./routes/index');
 var users = require('./routes/users');
 var record = require('./routes/record');
+var event = require('./routes/event');
+var myEvent = require('./routes/myEvent');
+var friend = require('./routes/friend');
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/record', record);
+app.use('/event', event);
+app.use('/myEvent', myEvent);
+app.use('/friend', friend);
 
 // 之前的写法
 // app.get('/', function (req, res) {

@@ -11,3 +11,9 @@
 #register {
     margin-right: 15px;
 }
+
+#login {
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 1px;
+}

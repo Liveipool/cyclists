@@ -5,17 +5,19 @@ block links
 block content
     div.register-page
         div.title Register
-        form
+        div
+            if errors
+                each error in errors
+                    div.alert.alert-danger #{error.msg}
+        form(action="/users/register" method="POST")
             div.form-group
                 label(for="username") Username
-                input#username.form-control(type="text" placeholder="Please enter your username")
+                input#username.form-control(type="text" placeholder="Please enter your username" name="username")
             div.form-group
                 label(for="password") Password
-                input#password.form-control(type="text" placeholder="Please enter your password")
+                input#password.form-control(type="text" placeholder="Please enter your password" name="password")
             div.form-group
-                label(for="phone") Phone Number
-                input#phone.form-control(type="text" placeholder="Please enter your phone number")
-        button#register.btn.btn-default Register
-        button#back.btn.btn-default Back To Login
-
-    script(src="/javascripts/register.js")
+                label(for="email") Email
+                input#email.form-control(type="email" placeholder="Please enter your email number" name="email")
+            button#register.btn.btn-default(type="submit") Register
+        a#login(href="/users/login") Login

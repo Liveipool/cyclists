@@ -1,7 +1,17 @@
-include header.pug
+extends layout
+//- 需要引入css文件等，就这么写
+block links
+    link(rel='stylesheet', href='/stylesheets/friend.css')
 
-div.friend-page
-    h3 friend页面
-    button#example.btn.btn-default example
+//- 下面是写该页面的内容
+block content
+    h1 Friend List
+    form
+        div#friends
+            ul#firend-list
+            
+    button#login.btn.btn-default Add
+    button#register.btn.btn-default Apply
 
+    //- 各个页面需要引入的js文件一般是单独写
     script(src="/javascripts/friend.js")

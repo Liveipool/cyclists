@@ -1,13 +1,9 @@
-var map, infoWindow,ren;
+var map, infoWindow,ren,str;
 var routes_data = {};
 function initMap() {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 6,
-        center: { lat: 50.736129, lng: -1.988229 }
-    });
-    //find user's location
+    var map = new google.maps.Map( document.getElementById('map'), {'zoom':12, 'mapTypeId': google.maps.MapTypeId.ROADMAP, 'center': new google.maps.LatLng(50.736129, -1.988229) })
     infoWindow = new google.maps.InfoWindow;
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -30,6 +26,8 @@ function initMap() {
     //auto complete address
     new AutocompleteDirectionsHandler(map);
 }
+
+
 
 
 //function enable user input 
@@ -56,28 +54,6 @@ function AutocompleteDirectionsHandler(map) {
           total += myroute.legs[i].distance.value;
         }
         total = total / 1000;
-        startTimeArray=document.getElementById('start-time').value.split(":")
-        endTimeArray=document.getElementById('end-time').value.split(":")
-        startTimeHour= parseInt(startTimeArray[0])+parseInt(startTimeArray[1])/60;
-        endTimeHour= parseInt(endTimeArray[0])+parseInt(endTimeArray[1])/60;
-        // calculations
-        var diffTime = endTimeHour-startTimeHour;
-        var speed=total/diffTime;
-        var weight=document.getElementById('weight').value;
-        var k1=(total*10)/400
-        var k=30/((diffTime*60)/k1)
-        var calories=weight*diffTime*k
-        var diffTimeFloat=parseFloat(diffTime).toFixed(3);
-        var speedFloat=parseFloat(speed).toFixed(3);
-        var caloriesFloat=parseFloat(calories).toFixed(3);
-        
-        console.log(total, diffTimeFloat, speedFloat, caloriesFloat);
-        
-        // var diffTime = (new Date(startTime).getTime() - new Date(endTime).getTime())/(3600*1000);
-        document.getElementById('distance').innerHTML = total;
-        document.getElementById('time').innerHTML =  diffTimeFloat;
-        document.getElementById('speed').innerHTML = speedFloat;
-        document.getElementById('calories').innerHTML = caloriesFloat;
     });
     
 
@@ -100,8 +76,8 @@ function AutocompleteDirectionsHandler(map) {
 
         
 }
-// save route so that user could check route
-function save_route()
+
+function save_routes()
 {
 	var w=[],wp;
 	var rleg = ren.directions.routes[0].legs[0];
@@ -110,9 +86,13 @@ function save_route()
 	var wp = rleg.via_waypoints	
 	for(var i=0;i<wp.length;i++)w[i] = [wp[i].lat(),wp[i].lng()]	
 	routes_data.waypoints = w;	
-	var str = JSON.stringify(routes_data)
-	console.log(routes_data);
+	str = JSON.stringify(routes_data)
+    
+    // console.log(str);
+    return routes_data;
+    // console.log(routes_data);
 }
+    // console.log(routes_data);
 
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

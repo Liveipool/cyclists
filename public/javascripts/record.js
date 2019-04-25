@@ -38,7 +38,8 @@ $(document).ready(function() {
             url: '/record',
             data: record,
             success: function(data) {
-                // 按理说应该是只更新右边的数据、清空左边的表格而不是刷新整个页面，不过写着会比较麻烦，后面有空再来优化，现在这么写也可以
+                // 按理说应该是只更新右边的数据、清空左边的表格而不是刷新整个页面，后面有空再优化
+                document.getElementById('distance').innerHTML ="";
                 location.reload();
             }
         });

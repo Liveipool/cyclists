@@ -1,12 +1,23 @@
+/* Optional: Makes the sample page fill the window. */
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 .record-page {
-    padding: 20px;
+    padding: 20px 15px;
     padding-top: 0;
     width: 100%;
     height: calc(100% - 50px);
 }
 
-#usernameText {
-    display: none;
+h3 {
+    margin-bottom: 20px;
+}
+
+.column {
+    padding: 20px 60px;
 }
 
 #row {
@@ -14,9 +25,9 @@
     height: 100%;
 }
 
-/* #place {
+#place {
     display: none;
-} */
+}
 
 .table-head {
     font-size: 14px;
@@ -30,16 +41,41 @@
 }
 
 .info {
-    margin: 10px 0;
+    margin: 30px 6px;
+    background-color:#F7B32D;
+    color: #000000;
+    box-shadow: 1px 1px 1px 1px #a39e9e;
+    padding: 6px;
+    font-size: 14px;
+    height: 55px;
+    border-radius: 15px;
+    text-align: center;
+    width: 22%;
 }
 
-/* Optional: Makes the sample page fill the window. */
-html,body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+#show_my_record {
+    margin-top: 10px;
 }
 
+.total {
+    margin: 30px 6px;
+    background-color:#F7B32D;
+    color: #000000;
+    box-shadow: 1px 1px 1px 1px #a39e9e;
+    padding: 6px;
+    font-size: 14px;
+    height: 55px;
+    border-radius: 15px;
+    text-align: center;
+    width: 30%;
+}
+
+#add_record {
+    display:block;
+    margin:0 auto
+}
+
+/* map */
 .controls {
     margin-top: 10px;
     /* padding-top: 90px; */

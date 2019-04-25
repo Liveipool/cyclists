@@ -1,5 +1,6 @@
 .login-page {
-    margin: 50px;
+    margin: 80px 120px;
+    width: 60%;
 }
 
 .title {
@@ -10,10 +11,10 @@
 
 #login {
     margin-right: 15px;
+    margin-top: 0px;
+    width: 100px;
 }
 
 #register {
-    display: inline-block;
-    margin-top: 5px;
-    margin-left: 1px;
+    margin-left: 10px;
 }

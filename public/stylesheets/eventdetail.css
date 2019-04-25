@@ -1,0 +1,28 @@
+.event-detail {
+    padding: 20px;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+.event-detail {
+    font-size:20px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+.title {
+    margin: 200px 30px;
+    font-weight: 400;
+}
+
+.content {
+    margin: 10px 40px;
+    font-weight: 300;
+}
+
+#event_detail {
+    margin: 10px 40px;
+    width: 80px;
+}

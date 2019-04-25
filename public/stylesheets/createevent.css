@@ -1,0 +1,14 @@
+.create-event {
+    padding: 20px;
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+#event_form {
+    margin: 30px;
+    width: 70%;
+}
+
+#create_publish {
+    width: 80px;
+}

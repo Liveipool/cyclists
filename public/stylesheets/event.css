@@ -3,3 +3,22 @@
     width: 100%;
     height: calc(100% - 50px);
 }
+
+#create_event {
+    margin: 30px 30px 10px 30px;
+}
+
+.card {
+    background: #EAEAEA;
+    box-shadow: 1px 1px 1px 1px #a39e9e;
+    margin: 30px;
+    width: 25%;
+    border-radius: 5px;
+    padding: 20px 20px 0px 20px;
+}
+
+.event_detail{
+    display:block;
+    margin:20px auto;
+    width: 80px;
+}

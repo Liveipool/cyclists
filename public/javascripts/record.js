@@ -49,7 +49,7 @@ $(document).ready(function() {
                 success: function(data) {
                     // 按理说应该是只更新右边的数据、清空左边的表格而不是刷新整个页面，后面有空再优化
                     document.getElementById('distance').innerHTML ="";
-                    alert('Success!')
+                    alert('Add successfully!')
                     location.reload();
                 }
             });

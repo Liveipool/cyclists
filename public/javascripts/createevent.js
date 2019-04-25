@@ -26,16 +26,26 @@ $(document).ready(function() {
         }
         console.log("event: ", event);
 
-        $.ajax({
-            //post 'POST' require to the server, route is /record
-            type: 'POST',
-            url: '/event/create',
-            data: event,
-            success: function(data) {
-                //jump back to event page
-                // location.reload();
-            }
-        });
+        let valid = true;
+        if (event.title === '') valid = false;
+        if (event.date === '') valid = false;
+        if (event.time === '') valid = false;
+        if (event.description === '') valid = false;
+
+        if (valid) {
+            $.ajax({
+                type: 'POST',
+                url: '/event/create',
+                data: event,
+                success: function(data) {
+                    //jump back to event page
+                    alert('Add successfully!')
+                    location.pathname = 'event';
+                }
+            });
+        } else {
+            alert('Please enter all infomation!')
+        }
         return false;
     })
 })

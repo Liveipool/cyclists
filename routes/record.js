@@ -9,7 +9,7 @@ var Record = require('../models/record');
 // 如果下面写为'/record'，对应的就是浏览器上的'/record/record'
 router.get('/', function(req, res) {
     //take out all data
-    // 加上username的筛选条件 就是只取这一个用户的record了
+    // 加上username的筛选条件 就是只取这一个用户的record了llllll
     Record.find({username: req.user.username}, function(err, data) {
         if (err) throw err;
         let totalDistance = 0;

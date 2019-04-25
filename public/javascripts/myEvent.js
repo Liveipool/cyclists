@@ -3,6 +3,6 @@ $(document).ready(function() {
     // sessionStorage.getItem('username')
 
     $('#example').click(function() {
-        alert('example');
+        location.pathname = 'friend';
     })
 })

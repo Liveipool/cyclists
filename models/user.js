@@ -1,4 +1,3 @@
-// 这个文件是从login_demo里的user.js里copy的
 var mongoose = require('mongoose');
 //encrypt
 var bcrypt = require('bcryptjs');

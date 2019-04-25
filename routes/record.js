@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
     //take out all data
     Record.find({}, function(err, data) {
         if (err) throw err;
-        res.render('record', {records: data})
+        res.render('record', {records: data, username: req.user.username})
     })
     //rend record.ejs
     //put the data in the 'records', take the records out in the views

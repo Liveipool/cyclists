@@ -1,4 +1,11 @@
+// 取到username并存到浏览器的sessionStorage中
+const username = $('#usernameText')[0].innerHTML;
+sessionStorage.setItem('username', username);
+
 $(document).ready(function() {
+    // 取到username
+    // sessionStorage.getItem('username')
+
     //click add, trigger event 'add-record'
     $('#add_record').on('click', function(event) {
         event.preventDefault();

@@ -12,7 +12,17 @@ router.get('/', function(req, res) {
     // 加上username的筛选条件 就是只取这一个用户的record了
     Record.find({username: req.user.username}, function(err, data) {
         if (err) throw err;
-        res.render('record', {records: data, username: req.user.username})
+        let totalDistance = 0;
+        let totalCyclingTime = 0;
+        let totalSpeed = 0;
+        for (let i = 0; i < data.length; i++) {
+            totalDistance += data[i].distance;
+            totalCyclingTime += data[i].time;
+            totalSpeed += data[i].speed;
+        }
+        const averageSpeed = totalSpeed / data.length;
+
+        res.render('record', {records: data, username: req.user.username, totalDistance, averageSpeed, totalCyclingTime})
     })
     //rend record.ejs
     //put the data in the 'records', take the records out in the views

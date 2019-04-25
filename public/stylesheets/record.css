@@ -5,6 +5,10 @@ html,body {
     padding: 0;
 }
 
+#usernameText {
+    display: none;
+}
+
 .record-page {
     padding: 20px 15px;
     padding-top: 0;

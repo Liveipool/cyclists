@@ -1,11 +1,8 @@
 // 取到username并存到浏览器的sessionStorage中
-const username = $('#usernameText')[0].innerHTML;
-sessionStorage.setItem('username', username);
+const usernameText = $('#usernameText')[0].innerHTML;
+sessionStorage.setItem('username', usernameText);
 
 $(document).ready(function() {
-    // 取到username
-    // sessionStorage.getItem('username')
-
     //click add, trigger event 'add-record'
     $('#add_record').on('click', function(event) {
         event.preventDefault();
@@ -20,7 +17,11 @@ $(document).ready(function() {
         var speed = $('#speed').text();
         var calories = $('#calories').text();
 
+        // 取到username
+        const username = sessionStorage.getItem('username')
+
         var record = {
+            username: username,
             weight: weight,
             date: date,
             startTime: startTime,

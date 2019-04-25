@@ -1,7 +1,23 @@
 include header.pug
 
-div.event-page
-    h3 event页面
-    button#example.btn.btn-default example
+block links
+    link(rel='stylesheet', href='/stylesheets/event.css')
 
-    script(src="/javascripts/event.js")
+div.event-page
+    h1 Event page
+    button#create_event.btn.btn-default(type="submit") Create An Event
+    a#create_event_link(href="/event/create") Create
+    div.row.col-md-12
+        each i in events
+            div.col-md-4.card
+                span Title: 
+                span#event_title #{i.title}
+                br
+                span Date: 
+                span#event_date #{i.date}
+                br
+                span Time: 
+                span#event_time #{i.time}
+                br
+                button.event_detail.btn.btn-warning(type="submit") Detail
+                a#event_detail_link(href="/event/detail/"+i._id) Detail

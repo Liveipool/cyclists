@@ -1,0 +1,32 @@
+include header.pug
+
+block links
+    link(rel='stylesheet', href='/stylesheets/createevent.css')
+
+div.event-detail
+    h1 Create event
+    form
+        div.form-group
+            label(for="create_title") Title: 
+            input#create_title.form-control(type="text" autocomplete="off")
+        div.form-group
+            label(for="create_date") Date: 
+            input#create_date.form-control(type="date" autocomplete="off")
+        div.form-group
+            label(for="create_time") Time: 
+            input#create_time.form-control(type="time" autocomplete="off")
+        div.form-group
+            label(for="create_route") Route: 
+        div#map
+        div#place
+            input#origin-input.controls(type="text" placehorlder="Enter an origin location" autocomplete="off")
+            input#destination-input.controls(type="text" placehorlder="Enter an destination location" autocomplete="off")
+        div.form-group
+            label(for="create_description") Description: 
+            textarea#create_description.form-control(rows="3" autocomplete="off")
+        button#create_publish.btn.btn-default(type="submit" onClick="save_routes()") Publish
+
+script(src="/javascripts/createevent.js")
+script(src="/javascripts/event.js")
+script(src="/javascripts/recordRoute.js")
+script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAeWXKaDnm2N6UX-qnR8BVFqzPWC49OWE&libraries=places&callback=initMap" async defer)

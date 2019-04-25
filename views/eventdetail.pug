@@ -1,0 +1,38 @@
+include header.pug
+
+block links
+    link(rel='stylesheet', href='/stylesheets/event.css')
+    link(rel='stylesheet', href='/stylesheets/eventdetail.css')
+
+div.event-detail
+    h1 Event page
+    span Title: 
+    span#event_detail_title #{events[0].title}
+    br
+    span Date: 
+    span#event_detail_date #{events[0].date}
+    br
+    span Time: 
+    span#event_detail_time #{events[0].time}
+    br
+    span Description: 
+    span#event_detail_description #{events[0].description}
+    br
+    span Routes: 
+    //- hidden string information and show map
+    span#event_detail_route(hidden) #{events[0].routestr}
+
+    div#map
+    br
+    span Participants: 
+    ul#event_detail_participants 
+        each i in events[0].participants
+            li #{events[0].participants[i]} 
+    br
+    span Publisher: 
+    span#event_detail_publisher #{events[0].publisher}
+    br
+    button#event_detail.btn.btn-default(type="submit") Join
+    a#event_detail_link(href="/event/join/"+events._id) Detail
+    script(src="/javascripts/eventdetail.js")
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAeWXKaDnm2N6UX-qnR8BVFqzPWC49OWE&libraries=places&callback=initMap" async defer)

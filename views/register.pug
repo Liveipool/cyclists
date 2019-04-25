@@ -3,6 +3,11 @@ block links
     link(rel='stylesheet', href='/stylesheets/register.css')
 
 block content
+    div.header-page
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            div.container-fluid
+                div.navbar-header
+                    a.navbar-brand(href='/record') Cycle Track 101
     div.register-page
         div.title Register
         div
@@ -22,4 +27,4 @@ block content
                 label(for="email") Email
                 input#email.form-control(type="email" placeholder="Please enter your email number" name="email")
             button#register.btn.btn-default(type="submit") Register
-        a#login(href="/users/login") Login
+            a#login(href="/users/login") Login

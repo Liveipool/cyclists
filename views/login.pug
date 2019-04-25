@@ -1,21 +1,24 @@
 extends layout
-//- 需要引入css文件等，就这么写
+//- import css
 block links
     link(rel='stylesheet', href='/stylesheets/login.css')
 
-//- 下面是写该页面的内容
 block content
+  div.header-page
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      div.container-fluid
+        div.navbar-header
+          a.navbar-brand(href='/record') Cycle Track 101
     div.login-page
         div.title Login
         div
-            //- 判断句 uccess_msg.length这些都是变量
             if success_msg.length
                 div.alert.alert-success #{success_msg}
             if error_msg.length
                 div.alert.alert-danger #{error_msg}
             if error.length
                 div.alert.alert-danger #{error}
-        //- bootstrap的表单组件：https://v3.bootcss.com/css/#forms
+
         form(action="/users/login" method="POST")
             div.form-group
                 label(for="username") Username
@@ -24,5 +27,6 @@ block content
                 label(for="password") Password
                 input#password.form-control(type="text" placeholder="Please enter your password" name="password")
             button#login.btn.btn-default(type="submit") Login
-        a#register(href="/users/register") Register
+            //- button#register.btn.btn-default(type="submit") Register
+            a#register(href="/users/register") Register
 

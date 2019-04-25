@@ -6,46 +6,49 @@ div.record-page
     // 用来存username，但是不展示
     div#usernameText #{username}
     div#row.row
-        div.col-md-6
+        div.column.col-md-6
             div#create-record
                 h3 Create a record
                 form
-                    div.form-group
-                        label(for="weight") Your weight
-                        div.input-group
-                            input#weight.form-control(type="number" placeholder="Please enter an number")
-                            div.input-group-addon KG
-                    div.form-group
-                        label(for="date") Your running date
-                        input#date.form-control(type="date")
-                    div.form-group
-                        label(for="start-time") Your start time
-                        input#start-time.form-control(type="time")
-                    div.form-group
-                        label(for="end-time") Your end time
-                        input#end-time.form-control(type="time")
+                    div.col-md-6
+                        div.form-group
+                            label(for="weight") Your weight
+                            div.input-group
+                                input#weight.form-control(type="number" placeholder="Please enter an number" autocomplete="off")
+                                div.input-group-addon KG
+                        div.form-group
+                            label(for="date") Your running date
+                            input#date.form-control(type="date" autocomplete="off")
+                    div.col-md-6
+                        div.form-group
+                            label(for="start-time") Your start time
+                            input#start-time.form-control(type="time" autocomplete="off")
+                        div.form-group
+                            label(for="end-time") Your end time
+                            input#end-time.form-control(type="time" autocomplete="off")
+                    
             div#map
-            div.info
+            div.col-md-3.info
                 span Distance(/km): 
                 span#distance
-            div.info
+            div.col-md-3.info
                 span Time(/h): 
                 span#time
-            div.info
+            div.col-md-3.info
                 span Speed(km/h): 
                 span#speed
-            div.info
+            div.col-md-3.info
                 span Calories(/kcal): 
                 span#calories
-            //- div#place
-            //-     input#origin-input.controls(type="text", placehorlder="Enter an origin location")
-            //-     input#destination-input.controls(type="text", placehorlder="Enter an destination location")
-            button#add_record(type="submit") ADD
+            div#place
+                input#origin-input.controls(type="text" placehorlder="Enter an origin location" autocomplete="off")
+                input#destination-input.controls(type="text" placehorlder="Enter an destination location" autocomplete="off")
+            button#add_record.btn.btn-default(type="submit") ADD A RECORD
 
-        div.col-md-6
+        div.column.col-md-6
             div#show-record
-                h3 Records
-                table.table.table-striped
+                h3 Show my records
+                table#show_my_record.table.table-striped
                     tr
                         th.table-head date
                         th.table-head distance(km)
@@ -60,12 +63,26 @@ div.record-page
                             td #{i.time}
                             td #{i.speed}
                             td #{i.calories}
-                p Total Distance: 3 km
-                span#total_distance
-                p Average Speed: 0.5 km/h
-                sapn#average_speed
-                p Total Cycling Time: 3 hours
-                span#total_cycling_time
+                div.col-md-4.total
+                    span Total Distance:
+                    span#total_distance
+                div.col-md-4.total
+                    span Average Speed:
+                    span#average_speed
+                div.col-md-4.total
+                    span Total Cycling Time:
+                    span#total_cycling_time
+    div#row.row
+        <br>
+        table.table.table-striped
+            tr
+                th.table-head(style=" text-align:center; font-size:30px") Visualization
+        div#vis
+        <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-xkhcs/embed/charts?id=25feb40c-35fa-474b-ae91-428b0a13a901&tenant=72bd52d8-63ad-415e-b672-48545307ce79"></iframe>
+        <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-xkhcs/embed/charts?id=6557e079-344c-4600-8ace-cf91d42ed161&tenant=72bd52d8-63ad-415e-b672-48545307ce79"></iframe>
+        <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-xkhcs/embed/charts?id=521d8ba6-6761-47f3-842e-2dc77c430da8&tenant=72bd52d8-63ad-415e-b672-48545307ce79"></iframe>
+        <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-project-0-xkhcs/embed/charts?id=6115b169-2525-4d7d-bbd5-9fe2e97156f6&tenant=72bd52d8-63ad-415e-b672-48545307ce79"></iframe>
+
 
     script(src="/javascripts/record.js")
     script(src="/javascripts/route.js")

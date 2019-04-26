@@ -28,6 +28,19 @@ function setroute(totalRoute) {
         if (sts == 'OK') render.setDirections(res);
     })
 }
+function join() {
+    const event_id = $('#event_id')[0].innerHTML;
+    $.ajax({
+        //post 'POST' require to the server, route is /record
+        type: 'POST',
+        url: '/event/join',
+        data: {event_id: event_id},
+        success: function(data) {
+            alert('Join successfully!')
+            location.reload();
+        }
+    });
+}
 // $(document).ready(function () {
 
 //     //click add event, trigger event 'add-event'

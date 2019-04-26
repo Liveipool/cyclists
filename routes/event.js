@@ -60,51 +60,60 @@ router.post('/create', urlencodeParser, function(req, res) {
     req.flash('success_msg', 'You have published an event');
 });
 
-
 //join a new event
-// router.put('/join/:id', function(req, res) {
-//     //current event's id
-//     var eventid = req.params.id;
-//     console.log(eventid);
-//     //current user's username
-//     var username = req.user.username;
-//     console.log(username);
-    //find the user
-    // User.find({username: username}, function(err, user) {
-    //     if (err) throw err;
-    //     console.log(user);
-        //find the event
-        // Event.find({_id: eventid}, function(err, data) {
-        //     if (err) throw err;
-        //     console.log(data);
-        //     event = data[0];
-        //     //check if user is joining a event he created
-        //     if (event.publisher === username) {
-        //         alert("Cannot join your own event");
-        //     }
-        //     //check if user has already joined this event
-        //     forEach(user.myevent, function(obj) {
-        //         if (obj.toString() === eventid.toString()) {
-        //             alert("You have already joined this event");
-        //         }
-        //     })
-        //     event.participants.push(username);
-        //     event.save(function(err) {
-        //         if (err) throw err;
-        //         user.myevent.push(eventid);
-        //         user.save(function(err) {
-        //             if (err) throw err;
-        //             alert("You have joined this event");
-        //         })
-        //     })
+router.post('/join', function(req, res) {
+    //current event's id
+    var event_id = req.body.event_id;
+    console.log('event_id: ', event_id);
+    //current user's username
+    var username = req.user.username;
+    console.log('username: ', username);
 
-        // })
-        
-    // })
-// })
+    // find the event
+    Event.find({_id: event_id}, function(err, data) {
+        if (err) throw err;
+        event = data[0];
+        console.log('event 1: ', event);
+        //check if user is joining a event he created
+        if (event.publisher === username) {
+            alert("Cannot join your own event");
+        } else {
+            event.participants.push({username: username});
+            console.log('event 2: ', event);
+            event.save(function(err) {
+                if (err) throw err;
+            })
+            // find the user
+            User.find({username: username}, function(err, user) {
+                if (err) throw err;
+                console.log('user: ', user);
+                console.log('user 1: ', user[0].myevent);
+                user[0].myevent.push(event_id);
+                user[0].save(function(err) {
+                    if (err) throw err;
+                })
+                console.log('user 2: ', user[0].myevent);
+                res.json(user);
+            })
+        }
+    })
+})
 
-
-
+                // //check if user has already joined this event
+                // forEach(user.myevent, function(obj) {
+                //     if (obj.toString() === event_id.toString()) {
+                //         alert("You have already joined this event");
+                //     }
+                // })
+                // event.participants.push(username);
+                // event.save(function(err) {
+                //     if (err) throw err;
+                //     user.myevent.push(event_id);
+                //     user.save(function(err) {
+                //         if (err) throw err;
+                //         alert("You have joined this event");
+                //     })
+                // })
 
 
 module.exports = router;

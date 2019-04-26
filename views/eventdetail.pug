@@ -26,13 +26,15 @@ div.event-detail
     br
     span Participants: 
     ul#event_detail_participants 
-        each i in events[0].participants
-            li #{events[0].participants[i]} 
+        each item in events[0].participants
+            li #{item.username} 
     br
     span Publisher: 
     span#event_detail_publisher #{events[0].publisher}
     br
-    a#event_detail_link(href="/event/join/"+events[0]._id)
-        button#event_detail.btn.btn-default(type="submit") Join
+    div#event_id(style="display: none") #{events[0]._id}
+    button#join.btn.btn-default(onclick="join()") Join
+    //- a#event_detail_link(href="/event/join/"+events[0]._id)
+    //-     button#event_detail.btn.btn-default(type="submit") Join
     script(src="/javascripts/eventdetail.js")
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAeWXKaDnm2N6UX-qnR8BVFqzPWC49OWE&libraries=places&callback=initMap" async defer)

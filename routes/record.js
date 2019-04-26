@@ -22,7 +22,8 @@ router.get('/', function(req, res) {
         }
         var _totalDistance = parseFloat(totalDistance).toFixed(3);
         var _totalCyclingTime = parseFloat(totalCyclingTime).toFixed(3);
-        var averageSpeed = totalSpeed / data.length;
+        var averageSpeed = 0;
+        if (data.length > 0) averageSpeed = totalSpeed / data.length
         _averageSpeed = parseFloat(averageSpeed).toFixed(3);
 
         res.render('record', {records: data, username: req.user.username, _totalDistance, _averageSpeed, _totalCyclingTime})

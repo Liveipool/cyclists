@@ -42,7 +42,7 @@ router.post('/create', urlencodeParser, function(req, res) {
         console.log('data: ', data);
         // res.json(data);
 
-        // 要先拿到event_id 再存进user中
+        // get the event_id first and then save in user
         const event_id = data._id;
         console.log('event_id: ', event_id);
         User.find({username: req.user.username}, function(err, user) {

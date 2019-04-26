@@ -8,19 +8,22 @@ var Event = require('../models/event');
 
 //route - http://localhost:3000/myEvent
 //
-// router.get('/', function(req,res) {
-// 	var allMyEvents = [];
-// 	User.find({username: req.user.username}, function(err, data) {
-// 		if (err) throw err;
-// 		var myevents = data.myevent;
-// 		for (i=0; i<myevents.length; i++) {
-// 			Event.find({_id: myevents[i]}, function(err, data) {
-// 				if (err) throw err;
-// 				allMyEvents.push(data);
-// 			})
-// 		}
-// 	})
-// 	res.render('myEvent', {evnets: allMyEvents});
-// });
+router.post('/', function(req,res) {
+	var allMyEvents = [];
+	User.find({username: req.user.username}, function(err, data) {
+		if (err) throw err;
+        var myevents = data[0].myevent;
+        console.log(myevents);
+		for (i=0; i<myevents.length; i++) {
+			Event.find({_id: myevents[i]}, function(err, data) {
+				if (err) throw err;
+				allMyEvents.push(data[0]);
+			})
+		}
+    })
+
+    console.log(allMyEvents);
+	res.json(allMyEvents);
+});
 
 module.exports = router;

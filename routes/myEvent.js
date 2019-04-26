@@ -10,22 +10,26 @@ var Event = require('../models/event');
 // router.get('/', function(req,res) {
 // 	res.render('myEvent');
 // });
-//
+
 router.get('/', function(req,res) {
 	var allMyEvents = [];
 	User.find({username: req.user.username}, function(err, data) {
 		if (err) throw err;
 		var myevents = data[0].myevent;
-		for (let i=0; i<myevents.length; i++) {
-			Event.find({_id: myevents[i]}, function(err, data) {
-				if (err) throw err;
-				allMyEvents.push(data[0]);
-				if (allMyEvents.length === myevents.length) {
-					// // 此时allMyEvents才是拿到了所有的myEvent
-					// res.json(allMyEvents);
-					res.render('myEvent', {events: allMyEvents});
-				}
-			});
+		if (myevents && myevents.length > 0) {
+			for (let i=0; i<myevents.length; i++) {
+				Event.find({_id: myevents[i]}, function(err, data) {
+					if (err) throw err;
+					allMyEvents.push(data[0]);
+					if (allMyEvents.length === myevents.length) {
+						// // 此时allMyEvents才是拿到了所有的myEvent
+						// res.json(allMyEvents);
+						res.render('myEvent', {events: allMyEvents});
+					}
+				});
+			}
+		} else {
+			res.render('myEvent', {events: []});
 		}
     })
 });

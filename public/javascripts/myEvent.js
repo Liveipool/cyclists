@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // 取到username
+    // get username
     // sessionStorage.getItem('username')
 
     $('#example').click(function() {

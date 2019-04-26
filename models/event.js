@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 var participantsSchema = new mongoose.Schema({
     username: String
 });

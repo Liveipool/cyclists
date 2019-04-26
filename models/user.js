@@ -2,21 +2,22 @@ var mongoose = require('mongoose');
 //encrypt
 var bcrypt = require('bcryptjs');
 
+var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
+
+var MyEventSchema = mongoose.Schema({
+	myevent: {type: ObjectId}
+})
+
 //User schema
 var UserSchema = mongoose.Schema({
 	username: {
 		type : String,
 		index :true,
-		// required: true
 	},
-	password: {
-		type: String,
-		// required: true
-	},
-	email: {
-		type: String,
-		// required: true
-	},
+	password: String,
+	email: String,
+	myevent: [MyEventSchema]
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

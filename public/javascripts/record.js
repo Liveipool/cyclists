@@ -1,5 +1,5 @@
-// 取到username并存到浏览器的sessionStorage中
-const usernameText = $('#usernameText')[0].innerHTML;
+// get username and save in the sessionStorage
+var usernameText = $('#usernameText')[0].innerHTML;
 sessionStorage.setItem('username', usernameText);
 
 $(document).ready(function() {
@@ -17,9 +17,10 @@ $(document).ready(function() {
         var speed = $('#speed').text();
         var calories = $('#calories').text();
 
-        // 取到username
-        const username = sessionStorage.getItem('username')
+        //get username
+        var username = sessionStorage.getItem('username')
 
+        //put the data into an object
         var record = {
             username: username,
             weight: weight,
@@ -33,22 +34,25 @@ $(document).ready(function() {
         }
         console.log("record: ", record);
 
+        //validated
         let valid = true;
         if (record.weight === '') valid = false;
         if (record.date === '') valid = false;
         if (record.startTime === '') valid = false;
         if (record.endTime === '') valid = false;
+        if (record.distance === '') valid = false;
+        if (record.speed === '') valid = false;
+        if (record.calories === '') valid = false;
 
+        
         if (valid) {
-            // 说明所有基本信息都不为空，可以post
+            // nothing is empty, then post
             $.ajax({
                 //post 'POST' require to the server, route is /record
                 type: 'POST',
                 url: '/record',
                 data: record,
                 success: function(data) {
-                    // 按理说应该是只更新右边的数据、清空左边的表格而不是刷新整个页面，后面有空再优化
-                    document.getElementById('distance').innerHTML ="";
                     alert('Add successfully!')
                     location.reload();
                 }

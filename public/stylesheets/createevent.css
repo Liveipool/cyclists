@@ -12,3 +12,14 @@
 #create_publish {
     width: 80px;
 }
+
+#right {
+    float: right;
+    margin-right: 50px;
+    width: 40%;
+}
+
+#left {
+    float: left;
+    width: 40%;
+}

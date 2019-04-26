@@ -1,9 +1,14 @@
+// get username and save in the sessionStorage
+var usernameText = $('#usernameText')[0].innerHTML;
+sessionStorage.setItem('username', usernameText);
 
 $(document).ready(function() {
     //click add, trigger event 'add-record'
     $('#create_publish').on('click', function(event) {
         event.preventDefault();
 
+        //get username
+        var username = sessionStorage.getItem('username')
         //take out the value of input
         var title = $('#create_title').val();
         var date = $('#create_date').val().toString();
@@ -12,8 +17,10 @@ $(document).ready(function() {
         var routestr = str;
         var description = $('#time').val();
         var participants = [];
-        var publisher = "this user";
+        var publisher = username;
 
+
+        //put the data into an object
         var event = {
             title: title,
             date: date,
@@ -26,12 +33,15 @@ $(document).ready(function() {
         }
         console.log("event: ", event);
 
+        //validacated - check if enter all elements
         let valid = true;
         if (event.title === '') valid = false;
         if (event.date === '') valid = false;
         if (event.time === '') valid = false;
         if (event.description === '') valid = false;
+        if (event.routestr === '') valid = false;
 
+        //send event data to the server
         if (valid) {
             $.ajax({
                 type: 'POST',

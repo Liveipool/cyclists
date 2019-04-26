@@ -32,7 +32,7 @@ div.event-detail
     span Publisher: 
     span#event_detail_publisher #{events[0].publisher}
     br
-    button#event_detail.btn.btn-default(type="submit") Join
-    a#event_detail_link(href="/event/join/"+events._id) Detail
+    a#event_detail_link(href="/event/join/"+events[0]._id)
+        button#event_detail.btn.btn-default(type="submit") Join
     script(src="/javascripts/eventdetail.js")
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAeWXKaDnm2N6UX-qnR8BVFqzPWC49OWE&libraries=places&callback=initMap" async defer)

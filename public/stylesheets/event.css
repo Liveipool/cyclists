@@ -4,6 +4,10 @@
     height: calc(100% - 50px);
 }
 
+#usernameText {
+    display: none;
+}
+
 #create_event {
     margin: 30px 30px 10px 30px;
 }

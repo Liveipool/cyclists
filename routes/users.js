@@ -28,9 +28,19 @@ router.post('/register', function(req,res) {
 	req.checkBody('email', 'Email is invalid').isEmail();
 
 	var errors = req.validationErrors();
+	console.log(errors);
+
+	// User.getUserByUsername(username, function(err, user) {
+	// 	if (err) throw err;
+	// 	console.log(user);
+	// 	if (user !== null) {
+	// 			alert("This username has been registered");
+	// 			console.log(errors);
+	// 	}
+	// })
 	
-	// 如果没错，就提示成功并跳转到登录页
-	// 如果有错，就把错误信息驾到全局的 errors 变量里
+	// if it is right, then jump to the log in page
+	// if it is wrong, then add the wrong message to the global errors
 	if (errors) {
 		res.render('register', {
 			errors : errors
@@ -49,12 +59,12 @@ router.post('/register', function(req,res) {
 	}
 });
 
-// 设置passport.js的strategy
+// set passport.js strategy
 passport.use(new LocalStrategy(
   function(username, password, done) {
   	User.getUserByUsername(username, function(err, user) {
 			if(err) throw err;
-			// 如果有错，添加对应的错误信息到locals.error里面，可以对应地在页面上进行提示
+			// put the error messsage in the locals.error
   		if(!user) {
   			return done(null, false, {message : 'Unknown User'});
   		}
@@ -80,12 +90,16 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+//route - http://localhost:3000/login
+//log in
 router.post('/login',
   passport.authenticate('local', {successRedirect: '/', failureRedirect: '/users/login', failureFlash: true}),
   function(req, res) {
     res.redirect('/');
 });
 
+//route - http://localhost:3000/logout
+//log out
 router.get('/logout', function (req, res) {
 	req.logout();
 	req.flash('success_msg', 'You are Logged out');

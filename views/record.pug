@@ -3,7 +3,7 @@ block links
     link(rel='stylesheet', href='/stylesheets/record.css')
 
 div.record-page
-    // 用来存username，但是不展示
+    // save the username，but not display
     div#usernameText #{username}
     div#row.row
         div.column.col-md-6
@@ -30,15 +30,19 @@ div.record-page
             div#map
             div.col-md-3.info
                 span Distance(/km): 
+                br
                 span#distance
             div.col-md-3.info
                 span Time(/h): 
+                br
                 span#time
             div.col-md-3.info
-                span Speed(km/h): 
+                span Speed(km/h):
+                br 
                 span#speed
             div.col-md-3.info
                 span Calories(/kcal): 
+                br
                 span#calories
             div#place
                 input#origin-input.controls(type="text" placehorlder="Enter an origin location" autocomplete="off")
@@ -65,13 +69,16 @@ div.record-page
                             td #{i.calories}
                 div.col-md-4.total
                     span Total Distance:
-                    span#total_distance #{totalDistance}
+                    br
+                    span#total_distance #{_totalDistance}
                 div.col-md-4.total
                     span Average Speed:
-                    span#average_speed #{averageSpeed}
+                    br
+                    span#average_speed #{_averageSpeed}
                 div.col-md-4.total
                     span Total Cycling Time:
-                    span#total_cycling_time #{totalCyclingTime}
+                    br
+                    span#total_cycling_time #{_totalCyclingTime}
     div#row.row
         <br>
         table.table.table-striped

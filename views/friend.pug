@@ -1,6 +1,7 @@
 include header.pug
 block links
     link(rel='stylesheet', href='/stylesheets/friend.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css")
 
 block content
     h1 Friend Page
@@ -18,4 +19,14 @@ block content
     div.col-md-4.column
         h4 Apply list
 
+    h1 Weather
+    input#target-city(type="text" placeholder="Enter City Name")
+    a#search-btn(href="#")
+        i.fas.fa-search
+    div#Result-city-name
+    img#icon(src="" alt="")
+    div#temp
+
     script(src="/javascripts/friend.js")
+    script(src="/javascripts/weather.js")
+    script(src="https://use.fontawesome.com/releases/v5.0.13/js/all.js")

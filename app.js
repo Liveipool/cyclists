@@ -10,7 +10,7 @@ var session = require('express-session');
 var passport = require('passport');
 
 var mongoose = require('mongoose');
-//mongoose.connect('mongodb://localhost/cyclists');
+// mongoose.connect('mongodb://localhost/cyclists');
 mongoose.connect('mongodb+srv://cs5003public:javascript@p3-kz4ij.mongodb.net/test?retryWrites=true', {useNewUrlParser: true});
 
 var app = express();

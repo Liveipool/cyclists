@@ -3,8 +3,9 @@ $(document).ready(function() {
         //post 'POST' require to the server, route is /record
         type: 'POST',
         url: '/myEvent',
-        data: events,
+        // data: events,
         success: function(data) {
+            console.log('data: ', data);
         //     $('#calendar').fullCalendar({
         //         defaultView: 'month',
         //         height: 'auto',

@@ -29,15 +29,6 @@ router.post('/register', function(req,res) {
 
 	var errors = req.validationErrors();
 	console.log(errors);
-
-	// User.getUserByUsername(username, function(err, user) {
-	// 	if (err) throw err;
-	// 	console.log(user);
-	// 	if (user !== null) {
-	// 			alert("This username has been registered");
-	// 			console.log(errors);
-	// 	}
-	// })
 	
 	// if it is right, then jump to the log in page
 	// if it is wrong, then add the wrong message to the global errors
@@ -46,16 +37,26 @@ router.post('/register', function(req,res) {
 			errors : errors
 		});
 	} else {
-		var newUser = new User({
-			username : username,
-			password : password,
-			email : email
+		User.getUserByUsername(username, function(err, user) {
+			if(err) throw err;
+			// put the error messsage in the locals.error
+			if (user) {
+				res.render('register', {
+					errors : [{msg: 'This username has benn registered!'}]
+				});
+			} else {
+				var newUser = new User({
+					username : username,
+					password : password,
+					email : email
+				});
+				User.createUser(newUser, function(err, user) {
+					if(err) throw(err);
+				});
+				req.flash('success_msg', 'You are registered and can now login');
+				res.redirect('/users/login')
+			}
 		});
-		User.createUser(newUser, function(err, user) {
-			if(err) throw(err);
-		});
-		req.flash('success_msg', 'You are registered and can now login');
-		res.redirect('/users/login')
 	}
 });
 

@@ -1,5 +1,5 @@
 .create-event {
-    padding: 20px;
+    padding: 0 20px 20px;
     width: 100%;
     height: calc(100% - 50px);
 }
@@ -16,10 +16,36 @@
 #right {
     float: right;
     margin-right: 50px;
+    padding: 22px 0;
     width: 40%;
 }
 
 #left {
     float: left;
     width: 40%;
+}
+
+#description {
+    margin-top: 15px;
+}
+
+#weather,
+#target-city,
+a#search-btn,
+#Result-city-name,
+#icon,
+#temp {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#weather,
+a#search-btn {
+    margin-left: 0;
+}
+
+/* control the size of the img */
+#icon {
+    width: 22px;
+    height: 22px;
 }

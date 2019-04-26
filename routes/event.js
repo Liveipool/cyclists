@@ -39,28 +39,25 @@ router.get('/create', function(req, res) {
 router.post('/create', urlencodeParser, function(req, res) {
     Event(req.body).save(function(err, data) {
         if (err) throw err;
-        res.json(data);
+        console.log('data: ', data);
+        // res.json(data);
+
+        // 要先拿到event_id 再存进user中
+        const event_id = data._id;
+        console.log('event_id: ', event_id);
+        User.find({username: req.user.username}, function(err, user) {
+            if (err) throw err
+            console.log('user 1: ', user[0].myevent);
+            user[0].myevent.push(event_id);
+            user[0].save(function(err) {
+                if (err) throw err;
+            })
+            console.log('user 2: ', user[0].myevent);
+            res.json(user);
+        })
     })
 
-    // console.log(req.params.id);
-    // console.log(req.body._id);
-    // var username = req.user.username;
-    // //console.log(username);
-    // User.find({username: username}, function(err, user) {
-    //     if (err) throw err
-    //     console.log(user);
-    //     console.log(req.body.title);
-    //     user[0].myevent.push(req.body.title);
-    //     user[0].save(function(err) {
-    //         if (err) throw err;
-    //     })
-    //     res.json(user);
-    // })
-
     req.flash('success_msg', 'You have published an event');
-	
-	//publish之后跳不回去
-	//res.redirect('/users/event')
 });
 
 

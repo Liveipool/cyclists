@@ -1,7 +1,14 @@
 include header.pug
 
+block links
+    link(rel='stylesheet', href='/stylesheets/myEvent.css')
+    link(rel='stylesheet', href='fullcalendar/fullcalendar.css')
+
 div.my-event-page
     h3 myEvent page
-    button#example.btn.btn-default go to friend page
+    div#calendar
 
     script(src="/javascripts/myEvent.js")
+    script(src='lib/jquery.min.js')
+    script(src='lib/moment.min.js')
+    script(src='fullcalendar/fullcalendar.js')

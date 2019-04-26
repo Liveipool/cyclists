@@ -7,11 +7,11 @@ var User = require('../models/user');
 var Event = require('../models/event');
 
 //route - http://localhost:3000/myEvent
-router.get('/', function(req,res) {
-	res.render('myEvent');
-});
+// router.get('/', function(req,res) {
+// 	res.render('myEvent');
+// });
 //
-router.post('/', function(req,res) {
+router.get('/', function(req,res) {
 	var allMyEvents = [];
 	User.find({username: req.user.username}, function(err, data) {
 		if (err) throw err;
@@ -21,8 +21,9 @@ router.post('/', function(req,res) {
 				if (err) throw err;
 				allMyEvents.push(data[0]);
 				if (allMyEvents.length === myevents.length) {
-					// 此时allMyEvents才是拿到了所有的myEvent
-					res.json(allMyEvents);
+					// // 此时allMyEvents才是拿到了所有的myEvent
+					// res.json(allMyEvents);
+					res.render('myEvent', {events: allMyEvents});
 				}
 			});
 		}

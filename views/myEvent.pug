@@ -5,8 +5,39 @@ block links
     //- link(rel='stylesheet', href='fullcalendar/fullcalendar.css')
 
 div.my-event-page
-    h3 myEvent page
-    div#calendar
+    h2#title My Events
+    //- a#create_event_link(href="/myEvent/add")
+    //-     button#create_event.btn.btn-default(type="submit") Add An Event
+    div.row.col-md-12
+        each i in events
+            div.col-md-4.card
+                span Title: 
+                span#event_title #{i.title}
+                br
+                span Date: 
+                span#event_date #{i.date}
+                br
+                span Time: 
+                span#event_time #{i.time}
+                br
+                a#event_detail_link(href="/event/detail/"+i._id)
+                    button.event_detail.btn.btn-warning(type="submit") Detail
+        
+        //- h3 My Events
+        //- each i in events
+        //-     div.col-md-4.card
+        //-         span Title: 
+        //-         span#event_title #{i.title}
+        //-         br
+        //-         span Date: 
+        //-         span#event_date #{i.date}
+        //-         br
+        //-         span Time: 
+        //-         span#event_time #{i.time}
+        //-         br
+        //-         a#event_detail_link(href="/event/detail/"+i._id)
+        //-             button.event_detail.btn.btn-warning(type="submit") Detail
+
 
     script(src="/javascripts/myEvent.js")
     //- script(src='lib/jquery.min.js')
